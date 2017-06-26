@@ -24,7 +24,7 @@ print(Schools)
 
 for i in Schools:
     try:
-        b = Monday.find(i)
+        b = Monday.find(schools)
         print(b)
 
     except:
