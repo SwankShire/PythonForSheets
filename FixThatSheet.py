@@ -4,7 +4,7 @@ from oauth2client.service_account import ServiceAccountCredentials
 scope = ['https://spreadsheets.google.com/feeds']
 
 
-credentials = ServiceAccountCredentials.from_json_keyfile_name('/home/nathan/Programming/OAuthInfo.json', scope)
+credentials = ServiceAccountCredentials.from_json_keyfile_name('OAuthInfo.json', scope)
 
 gs = gspread.authorize(credentials)
 
@@ -19,17 +19,18 @@ Monday = sheet.get_worksheet(2)
 #pulls the list of schools from the key worksheet
 Schools = SchoolList.range('B1:B300')
 
-print('list of schools')
-print(Schools)
+#gathers priority from monday sheet
+MdayPrio = Monday.range('B3:AA3')
 
-for i in Schools:
-    try:
-        b = Monday.find(schools)
-        print(b)
+#print('list of schools')
+#print(Schools)
 
-    except:
-        print('error')
-        print(i)
+print(MdayPrio)
+
+
+for i in MdayPrio:
+    print(Monday.find("legan Public Schools"))
+
 
 
 
