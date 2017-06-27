@@ -25,12 +25,13 @@ MdayPrio = Monday.range('B3:AA3')
 #print('list of schools')
 #print(Schools)
 
-print(MdayPrio)
+#print(MdayPrio)
 
+test = VQueue.acell('B7')
+mcell = Monday.acell('b3')
+print(test, mcell)
 
-for i in MdayPrio:
-    print(Monday.find("legan Public Schools"))
-
+print(Monday.find(test.value))
 
 
 
