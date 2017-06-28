@@ -42,9 +42,12 @@ for stuff in MdayPrio:
                     Monday.cell(stuff.row+21, stuff.col), Monday.cell(stuff.row+22, stuff.col)]
         print(cellList)
         if stuff.value == testcell.value:
+
+
             grabRange = []
 
-            grabRange = cellList[:]
+
+            VQueue.update_cells(grabRange)
             print(grabRange)
 
 
