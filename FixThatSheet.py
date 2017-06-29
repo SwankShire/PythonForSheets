@@ -26,34 +26,30 @@ testcell = VQueue.acell('b7')
 for stuff in MdayPrio:
     # checks if the cell is empty
     if stuff.value != "":
-        # gathers everything below the name of the school.
+        # gathers everything below the name of the school and puts it in a list #forloopsforever
         # first 2 cells are for date and ship ID, next 20 are for the claim #'s
+        cList = [testcell]
+        c = 1
+        for i in cList:
 
-        cellList = [Monday.cell(stuff.row + 1, stuff.col), Monday.cell(stuff.row + 2, stuff.col),
-                    Monday.cell(stuff.row + 3, stuff.col), Monday.cell(stuff.row + 4, stuff.col),
-                    Monday.cell(stuff.row + 5, stuff.col),
-                    Monday.cell(stuff.row + 6, stuff.col), Monday.cell(stuff.row + 7, stuff.col),
-                    Monday.cell(stuff.row + 8, stuff.col), Monday.cell(stuff.row + 9, stuff.col),
-                    Monday.cell(stuff.row + 10, stuff.col), Monday.cell(stuff.row + 12, stuff.col),
-                    Monday.cell(stuff.row + 13, stuff.col), Monday.cell(stuff.row + 14, stuff.col),
-                    Monday.cell(stuff.row + 15, stuff.col), Monday.cell(stuff.row + 16, stuff.col),
-                    Monday.cell(stuff.row + 17, stuff.col), Monday.cell(stuff.row + 18, stuff.col),
-                    Monday.cell(stuff.row + 19, stuff.col), Monday.cell(stuff.row + 20, stuff.col),
-                    Monday.cell(stuff.row + 21, stuff.col), Monday.cell(stuff.row + 22, stuff.col)]
-        print(cellList)
+            a = Monday.cell(stuff.row + c, stuff.col)
+            cList.append(a)
+            print(c)
+            print(cList)
+            c = c + 1
+            if c == 23: break
+
+        print(cList)
         if stuff.value == testcell.value:
 
-            grabRange = [Monday.cell(testcell.row + 1, testcell.col), Monday.cell(testcell.row + 2, testcell.col),
-                         Monday.cell(testcell.row + 3, testcell.col), Monday.cell(testcell.row + 4, testcell.col),
-                         Monday.cell(testcell.row + 6, testcell.col), Monday.cell(testcell.row + 7, testcell.col),
-                         Monday.cell(testcell.row + 8, testcell.col), Monday.cell(testcell.row + 9, testcell.col),
-                         Monday.cell(testcell.row + 10, testcell.col), Monday.cell(testcell.row + 11, testcell.col),
-                         Monday.cell(testcell.row + 12, testcell.col), Monday.cell(testcell.row + 13, testcell.col),
-                         Monday.cell(testcell.row + 14, testcell.col), Monday.cell(testcell.row + 15, testcell.col),
-                         Monday.cell(testcell.row + 16, testcell.col), Monday.cell(testcell.row + 17, testcell.col),
-                         Monday.cell(testcell.row + 18, testcell.col), Monday.cell(testcell.row + 19, testcell.col),
-                         Monday.cell(testcell.row + 20, testcell.col), Monday.cell(testcell.row + 21, testcell.col),
-                         Monday.cell(testcell.row + 22, testcell.col), ]
+            grabRange = [testcell]
+            g = 1
+            for z in grabRange:
+                l = VQueue.cell(testcell.row + g, testcell.col)
+                grabRange.append(l)
+                g = g + 1
+                if g == 23: break
+
 
             VQueue.update_cells(grabRange)
             print(grabRange)
