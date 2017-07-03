@@ -34,7 +34,7 @@ def GetSchoolsVQueue():
         VQueueSchools.append(a)
         i = i + 1
         if i == 13: break
-    print(VQueueSchools)
+    #print(VQueueSchools)
 
 # Makes a list of priorities from the Priority sheet
 def GatherPrio():
@@ -50,6 +50,7 @@ def GatherPrio():
         i = i + 1
         if a.value == "": break
         elif i > 100: break
+    FindPrio()
 
 
 # checks if the school in the VQueue sheet is a priority
@@ -57,8 +58,16 @@ def FindPrio():
     for q in VQueueSchools:
         for z in PrioList:
             if z.value == q.value:
+                print(q)
+
                 GetClaimList(z.row, z.col, q)
-                #break
+                break
+            try:
+                VQueueSchools.remove(q)
+                print(VQueueSchools)
+            except:
+                pass
+
 
 # Gets the relevant info below the school on the priority sheet if its also on the VQueue sheet
 def GetClaimList(row, col, VQueueCell):
@@ -77,7 +86,7 @@ def GetClaimList(row, col, VQueueCell):
 # Replaces the cells below the school on the VQueue sheet with the claim list from GetClaimList()
 def ReplaceCells(startCell):
 
-
+    print("startcell", startCell)
     i = 0
     for q in ClaimList:
         a = VQueue.cell(startCell.row + i, startCell.col)
@@ -97,7 +106,7 @@ def ReplaceCells(startCell):
         #Priority.update_cell(d.row, d.col, "")
         for c in ClaimList:
             Priority.update_cell(c.row, c.col, "")
-    print(d)
+    #print(d)
     for v in ClaimList:
         Priority.update_cell(v.row, v.col, "")
     ClaimList.clear()
@@ -108,7 +117,9 @@ GetSchoolsVQueue()
 # print(VQueueSchools)
 GatherPrio()
 #print(PrioList)
-FindPrio()
+
+
+
 quit()
 
 
