@@ -18,6 +18,8 @@ SchoolList = []
 PrioList = []
 ClaimList = []
 ReplacedCells = []
+
+ShipmentList = []
 #makes a list of every school on teh VQueue sheet
 def MakeSchoolList():
     startCell = VQueue.acell('b7')
@@ -81,6 +83,25 @@ def GetClaimList(priocell):
         ClaimList.append(a)
         i = i + 1
     #print("ClaimLIst", ClaimList)
+
+
+def ShipmentIDLink():
+    startCell = VQueue.acell('b9')
+    print(startCell.value)
+    c = 0
+    r = 0
+    i = 0
+    while i < 33:
+        ShipmentList.append(VQueue.cell(startCell.row + r, startCell.col + c))
+        i = i + 1
+        c = c + 1
+        if c == 12:
+            r = r + 28
+            c = 0
+
+#VQueue.update_acell('f9', '=HYPERLINK("https://www.repairwatch.com/admin/shipment-profile.php?id=13520","13520")')
 MakeSchoolList()
 MakePrioList()
 CheckForMatch()
+# ShipmentIDLink()
+# print(ShipmentList)
