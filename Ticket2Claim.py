@@ -18,21 +18,21 @@ class LateDeviceTracker(App):
         B = BoxLayout()
 
         lbl = Label(text=str(LateDeviceTracker.ScannedList))
-        tb = TextInput(multiline=True)
+        self.tb = TextInput(text='test',multiline=True)
         btn = Button(text='Search', font_size=14)
 
-
-        tb.bind(on_text=self.on_text())
+        btn.bind(on_press=self.buttonClicked)
+        self.tb.bind(on_enter=self.textInput)
 
 
         B.add_widget(lbl)
-        B.add_widget(tb)
+        B.add_widget(self.tb)
         B.add_widget(btn)
 
 
         return B
 
-    def on_text(self, ):
+    def textInput(self,):
         print('the widget', self.tb, 'have:', self.tb.text)
 
     def buttonClicked(self,B):
