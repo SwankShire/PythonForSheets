@@ -66,7 +66,7 @@ def repairWatchLogin(driver,WarrantyProvider,ClaimNum,SerialNum):
     login.send_keys('nsmith111498@gmail.com',Keys.TAB,'$repair123',Keys.ENTER)
     repairWatchAccountSelect(driver,WarrantyProvider,ClaimNum,SerialNum)
     # code to switch back to other tab
-    #driver.switch_to_window(driver.window_handles[0])
+    driver.switch_to_window(driver.window_handles[0])
 
 def repairWatchAccountSelect(driver,WarrantyProvider,ClaimNum,SerialNum):
     driver.get('https://www.repairwatch.com/admin/view-accounts.php')
