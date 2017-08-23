@@ -24,13 +24,13 @@ class TicketToClaim(App):
     ClaimList =[]
     ScannedList = []
     def build(self):
-        B = BoxLayout()
+        B = BoxLayout(orientation='vertical')
 
         self.lbl = Label(text='')
-        self.tb = TextInput(text='test',multiline=False)
-        btn = Button(text='Add', font_size=14)
-        self.btnAccounts = Button(text='Account', font_size=15)
-        self.btnSubmit = Button(text='Submit', font_size=18)
+        self.tb = TextInput(text='test',multiline=False, size_hint=(.3, 1))
+        btn = Button(text='Add', font_size=14, size_hint=(.3, 1))
+        self.btnAccounts = Button(text='Account', font_size=15, size_hint=(.3, 1))
+        self.btnSubmit = Button(text='Submit', font_size=18, size_hint=(.3, 1))
 
         self.btnAccounts.bind(on_press=self.selectAccount)
         btn.bind(on_press=self.btnClick)
@@ -120,7 +120,7 @@ class TicketToClaim(App):
     def selectAccount(self):
         self.driver.get('https://www.repairwatch.com/admin/view-accounts.php')
         self.driver.implicitly_wait(5)
-        page = self.driver.current_url
+
         while self.driver.current_url == 'https://www.repairwatch.com/admin/view-accounts.php':
             self.driver.implicitly_wait(5)
 
@@ -141,6 +141,11 @@ class TicketToClaim(App):
             SearchBox.send_keys(claim)
             CheckBox = self.driver.find_element_by_class_name('ckbx_ship')
             CheckBox.click()
+
+    def on_stop(self):
+        self.driver.quit()
+
+
 if __name__ == '__main__':
     TicketToClaim().run()
 
